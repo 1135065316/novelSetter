@@ -1,19 +1,19 @@
 <template>
   <div>
-		123
+		主页
   </div>
 </template>
 
 <script>
 
 export default {
-	name: 'Test',
+	name: 'index',
   data() {
 		return {
-			key: 111
+			
 		}
 	},
-	onReady() {
+	beforeCreate() {
 		console.log(1)
 	}
 }
