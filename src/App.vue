@@ -18,4 +18,9 @@ export default {
     padding: 0;
   }
   html,body,#app{height:100%;}
+  @font-face
+  {
+  font-family: hanzi01;
+  src: url('./assets/fonts/hanzi01.ttf');
+  }
 </style>

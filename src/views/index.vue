@@ -1,104 +1,98 @@
 <template>
   <div class="container">
 		<el-container>
-			<el-header>小说世界生成器</el-header>
+			<el-header>
+				<h1 class="title">小说世界生成器</h1>
+			</el-header>
 			<el-container>
-				<el-aside width="200px">
+				<el-aside width="201px">
 					<el-col :span="12">
-						<h5>自定义颜色</h5>
 						<el-menu
-							default-active="2"
+							default-active="1"
 							class="el-menu-vertical-demo"
-							@open="handleOpen"
-							@close="handleClose"
+							@select='select'
 							background-color="#545c64"
 							text-color="#fff"
-							active-text-color="#ffd04b">
-							<el-submenu index="1">
-								<template slot="title">
-									<i class="el-icon-location"></i>
-									<span>导航一</span>
-								</template>
-								<el-menu-item-group>
-									<template slot="title">分组一</template>
-									<el-menu-item index="1-1">选项1</el-menu-item>
-									<el-menu-item index="1-2">选项2</el-menu-item>
-								</el-menu-item-group>
-								<el-menu-item-group title="分组2">
-									<el-menu-item index="1-3">选项3</el-menu-item>
-								</el-menu-item-group>
-								<el-submenu index="1-4">
-									<template slot="title">选项4</template>
-									<el-menu-item index="1-4-1">选项1</el-menu-item>
-								</el-submenu>
-							</el-submenu>
+							active-text-color="#ffd04b" style="width:200px;">
+							<el-menu-item index="1">
+								<span slot="title">卡池</span>
+							</el-menu-item>
 							<el-menu-item index="2">
-								<i class="el-icon-menu"></i>
 								<span slot="title">导航二</span>
 							</el-menu-item>
-							<el-menu-item index="3" disabled>
-								<i class="el-icon-document"></i>
+							<el-menu-item index="3">
 								<span slot="title">导航三</span>
 							</el-menu-item>
 							<el-menu-item index="4">
-								<i class="el-icon-setting"></i>
 								<span slot="title">导航四</span>
 							</el-menu-item>
 						</el-menu>
 					</el-col>
 				</el-aside>
-				<el-main>Main</el-main>
+				<el-main>
+					<card-pool v-if="currentMainPage==1"></card-pool>
+				</el-main>
 			</el-container>
 	</el-container>
 	</div>
 </template>
 
 <script>
+import cardPool from '@/components/mainBox/cardPool.vue'
 export default {
 	name: 'index',
   data() {
 		return {
-			
+			currentMainPage: 1,
 		}
+	},
+	components: {
+		cardPool
 	},
 	beforeCreate() {
-		console.log(1)
 	},
 	methods: {
-		handleOpen(key, keyPath) {
-			console.log(key, keyPath);
+		select(index) {
+			this.currentMainPage = index
 		},
-		handleClose(key, keyPath) {
-			console.log(key, keyPath);
-		}
 	},
 }
 </script>
 
 <style lang='scss'>
-.container {
-	height: 100%;
-	.el-container {
+	.container {
 		height: 100%;
+		.el-container {
+			height: 100%;
+		}
+		.el-header {
+			background-color: #B3C0D1;
+			color: #333;
+			text-align: center;
+			height: 90px !important;
+			text-align: center;
+			line-height: 90px;
+			.title {
+				font-size: 40px;
+				font-family: hanzi01;
+				letter-spacing: 2px;
+				text-shadow: 0px 0px 1px rgba(51,51,51,0.3);
+			}
+		}
+		
+		.el-aside {
+			background-color: #545c64;
+			color: #333;
+			text-align: center;
+			border-right: 1px solid #3f4246;
+			overflow-x:hidden;
+		}
+		
+		.el-main {
+			background-color: #E9EEF3;
+			color: #333;
+			text-align: center;
+			padding: 0;
+		}
 	}
-	.el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-		height: 120px !important;
-  }
-  
-  .el-aside {
-    // background-color: #D3DCE6;
-    background-color: #545c64;
-    color: #333;
-    text-align: center;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-  }
-}
 </style>
