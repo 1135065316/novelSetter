@@ -63,14 +63,10 @@
 				if(!this.inputCheck()) {
 					return
 				}
-				// 发送请求
-				this.axios.get('http://127.0.0.1:3000/')
-				.then(function (response) {
-					console.log(response);
+				this.$service.test()
+				.then(res=>{
+					console.log(res)
 				})
-				.catch(function (error) {
-					console.log(error);
-				});
 			},
 			// 输入校验
 			inputCheck() {
