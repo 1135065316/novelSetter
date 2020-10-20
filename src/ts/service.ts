@@ -7,9 +7,9 @@ const service = axios.create({
   timeout: 7000, // 请求超时时间
   baseURL: ConfigBaseURL,
   method: 'post',
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8'
-  }
+  // headers: {
+  //   'Content-Type': 'application/json;charset=UTF-8'
+  // }
 })
 // 添加请求拦截器
 service.interceptors.request.use(config => {
@@ -35,11 +35,14 @@ service.interceptors.response.use(response => {
   loadingInstance.close()
   return Promise.reject(error)
 })
-function test() {
+
+// 上传卡片
+function uploadCard(data:object) {
 	return service({
-    url: '',
+    url: '/card_pool/upload_card',
+    data: JSON.stringify(data)
   })
 }
 export default {
-	test
+	uploadCard
 }

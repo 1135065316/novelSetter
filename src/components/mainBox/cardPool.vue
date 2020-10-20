@@ -58,12 +58,12 @@
 				this.activeTab = index
 			},
 			// 提交卡片
-			onSubmit(data) {
+			onSubmit() {
 				// 输入校验
 				if(!this.inputCheck()) {
 					return
 				}
-				this.$service.test()
+				this.$service.uploadCard(this.form)
 				.then(res=>{
 					console.log(res)
 				})
