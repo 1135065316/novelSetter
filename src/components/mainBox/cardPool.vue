@@ -58,15 +58,26 @@
 				this.activeTab = index
 			},
 			// 提交卡片
-			onSubmit() {
-				// 输入校验
+			async onSubmit() {
+				// 1.输入校验
 				if(!this.inputCheck()) {
 					return
 				}
-				this.$service.uploadCard(this.form)
-				.then(res=>{
-					console.log(res)
-				})
+				// 2.上传卡片
+				const backData = await this.$service.uploadCard(this.form)
+				// 3.打印提示
+				if(backData === 'ok') {
+					this.$message({
+          message: '已成功生成卡片!',
+          type: 'success'
+        	});
+				}
+				// 4.重置数据
+				this.form = {
+          name: '',
+          type: '',
+          content: '',
+				}
 			},
 			// 输入校验
 			inputCheck() {
