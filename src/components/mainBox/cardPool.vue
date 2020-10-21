@@ -28,7 +28,7 @@
 					</el-radio-group>
 				</el-form-item>
 				<el-form-item label="卡片描述">
-					<el-input type="textarea" v-model="form.desc"></el-input>
+					<el-input type="textarea" v-model="form.content"></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="onSubmit">立即生成</el-button>
@@ -45,9 +45,9 @@
 		data() {
 			return {
 				form: {
-          name: '',
-          type: '',
-          desc: ''
+          name: '', // 卡名
+          type: '', // 卡类型
+          content: '', // 卡内容
 				},
 				cardType: ['人物','物品','场景'],
 				activeTab: 1,
